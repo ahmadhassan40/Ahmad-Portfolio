@@ -138,7 +138,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto max-w-5xl relative z-10">
-        <div className="hero-classic-card animate-fade-in">
+        <div className="hero-classic-card animate-fade-in mt-8 sm:mt-10">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-primary mb-6">
             Ahmad Hassan
           </h1>
