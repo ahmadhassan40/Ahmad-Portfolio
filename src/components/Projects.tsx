@@ -42,14 +42,14 @@ const Projects = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-primary mb-4">Projects</h2>
-          <div className="w-20 h-1 bg-accent mx-auto mb-8"></div>
+          <div className="w-20 h-1 bg-black mx-auto mb-8"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="p-6 hover:shadow-lg transition-all border border-border bg-card hover:border-accent/30"
+              className="p-6 hover:shadow-lg transition-all border border-border bg-card hover:border-black"
             >
               <div className="flex items-start justify-between mb-3">
                 <h3 className="text-xl font-semibold text-primary">{project.title}</h3>
@@ -68,7 +68,7 @@ const Projects = () => {
 
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech, i) => (
-                  <Badge key={i} className="bg-accent/10 text-accent border-accent/20">
+                  <Badge key={i} className="bg-black text-white border-black">
                     {tech}
                   </Badge>
                 ))}
@@ -79,7 +79,7 @@ const Projects = () => {
               <ul className="space-y-2">
                 {project.highlights.map((highlight, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-foreground/70">
-                    <span className="text-accent mt-1 flex-shrink-0">•</span>
+                    <span className="text-black mt-1 flex-shrink-0">•</span>
                     <span>{highlight}</span>
                   </li>
                 ))}

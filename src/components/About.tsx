@@ -30,7 +30,7 @@ const About = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-primary mb-4">About Me</h2>
-          <div className="w-20 h-1 bg-accent mx-auto mb-8"></div>
+          <div className="w-20 h-1 bg-black mx-auto mb-8"></div>
         </div>
 
         <div className="max-w-3xl mx-auto mb-16 text-center">
@@ -53,8 +53,8 @@ const About = () => {
               className="p-6 hover:shadow-lg transition-shadow border border-border bg-card"
             >
               <div className="flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                  <trait.icon className="h-6 w-6 text-accent" />
+                <div className="w-12 h-12 rounded-lg bg-black/5 flex items-center justify-center mb-4">
+                  <trait.icon className="h-6 w-6 text-black" />
                 </div>
                 <h3 className="text-lg font-semibold text-primary mb-2">{trait.title}</h3>
                 <p className="text-sm text-muted-foreground">{trait.description}</p>

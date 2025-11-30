@@ -54,7 +54,7 @@ const Skills = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-primary mb-4">Skills</h2>
-          <div className="w-20 h-1 bg-accent mx-auto mb-8"></div>
+          <div className="w-20 h-1 bg-black mx-auto mb-8"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -64,8 +64,8 @@ const Skills = () => {
               className="p-6 hover:shadow-lg transition-shadow border border-border bg-card"
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <category.icon className="h-5 w-5 text-accent" />
+                <div className="w-10 h-10 rounded-lg bg-black/5 flex items-center justify-center">
+                  <category.icon className="h-5 w-5 text-black" />
                 </div>
                 <h3 className="text-xl font-semibold text-primary">{category.title}</h3>
               </div>
@@ -75,7 +75,7 @@ const Skills = () => {
                   <Badge
                     key={i}
                     variant="secondary"
-                    className="bg-muted hover:bg-accent/10 hover:text-accent hover:border-accent/20 transition-colors"
+                    className="bg-muted hover:bg-black hover:text-white hover:border-black transition-colors"
                   >
                     {skill}
                   </Badge>

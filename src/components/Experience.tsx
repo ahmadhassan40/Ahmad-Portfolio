@@ -119,15 +119,15 @@ const Experience = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-primary mb-4">Experience</h2>
-          <div className="w-20 h-1 bg-accent mx-auto mb-8"></div>
+          <div className="w-20 h-1 bg-black mx-auto mb-8"></div>
         </div>
 
         <div className="space-y-8 relative">
           {/* Timeline line */}
           <div
-            ref={lineRef}
-            className="hidden md:block absolute left-8 top-0 bottom-0 w-[0.4rem] timeline-line"
-            aria-hidden
+
+            className="hidden md:block absolute "
+
           >
             <span className="timeline-track" />
             <span className="timeline-fill" style={fillStyle} />
@@ -143,19 +143,19 @@ const Experience = () => {
                 ref={(el) => {
                   dotRefs.current[index] = el;
                 }}
-                className="hidden md:block absolute -left-[3.25rem] top-8 w-4 h-4 rounded-full bg-accent border-4 border-background"
+                className="hidden md:block absolute -left-[3.25rem] top-8 w-4 h-4 rounded-full bg-black border-4 border-background"
               ></div>
 
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-primary mb-2">{exp.role}</h3>
                   <div className="flex items-center gap-2 text-foreground font-medium mb-2">
-                    <Briefcase className="h-4 w-4 text-accent" />
+                    <Briefcase className="h-4 w-4 text-black" />
                     {exp.company}
                   </div>
                 </div>
                 {exp.current && (
-                  <Badge className="bg-accent/10 text-accent border-accent/20 mb-2 md:mb-0">
+                  <Badge className="bg-black text-white border-black mb-2 md:mb-0">
                     Current
                   </Badge>
                 )}
@@ -175,7 +175,7 @@ const Experience = () => {
               <ul className="space-y-2">
                 {exp.responsibilities.map((resp, i) => (
                   <li key={i} className="flex items-start gap-3 text-foreground/80">
-                    <span className="text-accent mt-1.5 flex-shrink-0">•</span>
+                    <span className="text-black mt-1.5 flex-shrink-0">•</span>
                     <span>{resp}</span>
                   </li>
                 ))}
