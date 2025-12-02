@@ -1,51 +1,32 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Code2, Smartphone, Wrench, Users } from "lucide-react";
+import { Code2, Smartphone, Wrench, Users, Layers, Cpu } from "lucide-react";
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Web Development",
       icon: Code2,
-      skills: [
-        "MERN Stack",
-        "MongoDB",
-        "Express.js",
-        "React",
-        "Node.js",
-        "REST APIs",
-        "Chrome Extensions",
-        "Website Deployment",
-        "Redux",
-        "Tailwind CSS",
-        "Git & GitHub",
-      ],
+      title: "Primary Stack",
+      description: "Daily drivers for building production-ready apps",
+      skills: ["React", "Node.js", "Express", "MongoDB", "TypeScript", "Tailwind CSS"],
     },
     {
-      title: "Tools & Practices",
+      icon: Layers,
+      title: "Comfortable With",
+      description: "Tools I use regularly for specific needs",
+      skills: ["Next.js", "Redux", "PostgreSQL", "Firebase", "Docker", "Git"],
+    },
+    {
       icon: Wrench,
-      skills: [
-        "Git",
-        "Testing",
-        "Debugging",
-        "Deployment",
-        "Code Reviews",
-        "Documentation",
-        "Version Control",
-      ],
+      title: "Tools & Testing",
+      description: "Workflow optimization and quality assurance",
+      skills: ["Jest", "Playwright", "Postman", "Vercel", "Netlify", "GitHub Actions"],
     },
     {
-      title: "Soft Skills",
-      icon: Users,
-      skills: [
-        "Adaptability",
-        "Communication",
-        "Growth Mindset",
-        "Professionalism",
-        "Time Management",
-        "Problem Solving",
-        "Team Collaboration",
-      ],
+      icon: Cpu,
+      title: "Exploring",
+      description: "Technologies I'm currently learning",
+      skills: ["Rust", "WebAssembly", "GraphQL", "AWS Lambda"],
     },
   ];
 
@@ -63,19 +44,22 @@ const Skills = () => {
               key={index}
               className="p-6 hover:shadow-lg transition-shadow border border-border bg-card"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-black/5 flex items-center justify-center">
-                  <category.icon className="h-5 w-5 text-black" />
+              <div className="flex items-start gap-4 mb-6">
+                <div className="p-3 bg-black/5 rounded-lg">
+                  <category.icon className="h-6 w-6 text-black" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary">{category.title}</h3>
+                <div>
+                  <h3 className="text-xl font-semibold text-primary">{category.title}</h3>
+                  <p className="text-sm text-muted-foreground">{category.description}</p>
+                </div>
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, i) => (
+                {category.skills.map((skill) => (
                   <Badge
-                    key={i}
+                    key={skill}
                     variant="secondary"
-                    className="bg-muted hover:bg-black hover:text-white hover:border-black transition-colors"
+                    className="bg-secondary hover:bg-secondary/80 text-secondary-foreground px-3 py-1 text-sm"
                   >
                     {skill}
                   </Badge>

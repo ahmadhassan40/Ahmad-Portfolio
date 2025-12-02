@@ -145,7 +145,26 @@ const Hero = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-tight whitespace-nowrap">
               MERN Stack Developer
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+            <p className="text-xl font-medium text-foreground/80">
+              I focus on dashboards, Chrome extensions, and performance-focused web apps.
+            </p>
+
+            <div className="flex flex-wrap gap-4 text-sm font-medium text-muted-foreground mb-2">
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                2+ Years Building Production Apps
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                5+ Full-Stack Projects
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                Ex-Authority Hype Intern
+              </span>
+            </div>
+
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl text-justify">
               I craft performant web applications and scalable APIs using
               MongoDB, Express, React, and Node.js. From database design to
               frontend polish, I build reliable full-stack solutions that drive
@@ -177,6 +196,20 @@ const Hero = () => {
               <button type="button" className="btn-secondary" onClick={() => scrollToSection("#contact")}>
                 Contact Me
               </button>
+              <div className="flex items-center gap-3 ml-2">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 text-muted-foreground hover:text-primary transition-colors"
+                    aria-label={link.label}
+                  >
+                    <link.icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>

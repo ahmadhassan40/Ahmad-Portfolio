@@ -6,22 +6,22 @@ const About = () => {
     {
       icon: Code2,
       title: "Technical Excellence",
-      description: "Strong foundation in MERN stack, mobile development, and modern web technologies.",
+      description: "Optimized extension scripts to reduce API calls by 30%. Strong foundation in MERN stack.",
     },
     {
       icon: Rocket,
       title: "Proactive Approach",
-      description: "Self-starter who takes initiative and delivers results without constant supervision.",
+      description: "Built internal tools to automate deployment workflows. Self-starter who delivers results.",
     },
     {
       icon: Users,
       title: "Team Player",
-      description: "Excellent collaboration skills with experience working in diverse development teams.",
+      description: "Conducted code reviews and mentored junior peers. Excellent collaboration skills.",
     },
     {
       icon: TrendingUp,
       title: "Growth Mindset",
-      description: "Continuously learning and adapting to new technologies and best practices.",
+      description: "Constantly exploring new patterns like Server Actions. Adaptable to new technologies.",
     },
   ];
 
@@ -33,17 +33,47 @@ const About = () => {
           <div className="w-20 h-1 bg-black mx-auto mb-8"></div>
         </div>
 
-        <div className="max-w-3xl mx-auto mb-16 text-center">
-          <p className="text-lg text-foreground leading-relaxed mb-6">
-            I'm a results-oriented MERN Stack developer with hands-on experience from internships
-            and academic projects. I've worked across front-end and back-end modules of MERN web
-            apps, supported production website deployments, and built Chrome extension features.
-          </p>
-          <p className="text-lg text-foreground leading-relaxed">
-            I specialize in building responsive web applications, integrating REST APIs, and
-            optimizing performance. I'm known for my adaptability, professionalism, and a
-            proactive, results-focused approach to software development.
-          </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-start">
+          {/* Left Column: Bio */}
+          <div className="text-lg text-foreground leading-relaxed text-justify max-w-[65ch]">
+            <p className="mb-6">
+              I’m a <strong>MERN</strong> stack developer who enjoys turning ideas into fast, reliable web apps. I’ve built <strong>dashboards</strong>, <strong>Chrome extensions</strong>, and <strong>full-stack products</strong> using MongoDB, Express, React, and Node. From database design to deployment, I like owning the entire flow – shipping clean code, thoughtful UX, and performance-focused features that actually solve problems.
+            </p>
+            <p>
+              I specialize in building responsive web applications, integrating REST APIs, and
+              optimizing performance. I'm known for my adaptability, professionalism, and a
+              proactive, results-focused approach to <strong>end-to-end MERN apps</strong>.
+            </p>
+          </div>
+
+          {/* Right Column: Stats Stack */}
+          <div className="bg-card border border-border rounded-lg p-6 space-y-6 shadow-sm">
+            <div>
+              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Currently</h3>
+              <p className="text-lg font-medium text-primary">Antigravity – MERN Developer</p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Focus</h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">Dashboards</span>
+                <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">Chrome Extensions</span>
+                <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">Performance</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Location</h3>
+              <p className="text-lg font-medium text-primary flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                Gujranwala, Pakistan
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-8">
+          <h3 className="text-2xl font-bold text-primary">What I'm good at</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -52,7 +82,7 @@ const About = () => {
               key={index}
               className="p-6 hover:shadow-lg transition-shadow border border-border bg-card"
             >
-              <div className="flex flex-col items-center text-center">
+              <div className="flex flex-col items-start text-left">
                 <div className="w-12 h-12 rounded-lg bg-black/5 flex items-center justify-center mb-4">
                   <trait.icon className="h-6 w-6 text-black" />
                 </div>

@@ -843,10 +843,7 @@ textarea:focus {
 
 .hero-vscode-window:hover {
   transform: rotateY(0deg) rotateX(0deg) translateY(-5px);
-  box-shadow:
-    0 35px 60px -15px rgba(0, 0, 0, 0.3),
-    /* Stronger shadow */
-    0 0 0 2px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 15px 15px 0px #000;
 }
 
 .hero-gradient {
@@ -1066,8 +1063,8 @@ textarea:focus {
   border-color: #000;
   color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 8px 0px rgba(0, 0, 0, 0.2);
-  /* Unique hard shadow */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  /* Soft diffused shadow */
 }
 
 .tech-badge {
@@ -1087,12 +1084,12 @@ textarea:focus {
 }
 
 .tech-badge:hover {
-  background: #000;
+  background: #fff;
   border-color: #000;
-  color: #fff;
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
-  /* Unique hard shadow */
+  color: #000;
+  transform: translate(-3px, -3px);
+  box-shadow: 3px 3px 0px #000;
+  /* Diagonal hard shadow */
 }
 
 .hero-code-header {
@@ -1433,4 +1430,14 @@ textarea:focus {
   .hero-vscode-workbench {
     padding: 1.5rem 1.1rem 2rem;
   }
+}
+
+/* Timeline Styles */
+.timeline-track {
+  background: linear-gradient(to bottom, transparent, hsl(var(--border)) 15%, hsl(var(--border)) 85%, transparent);
+  opacity: 0.5;
+}
+
+.timeline-fill {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

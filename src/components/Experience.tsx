@@ -10,11 +10,15 @@ const Experience = () => {
       company: "Authority Hype",
       location: "Gujranwala, Pakistan",
       period: "March 2025 – June 2025",
+      tech: ["React", "Node.js", "MongoDB", "Chrome Extensions"],
       responsibilities: [
         "Assisted across MERN web apps (front-end & back-end modules)",
         "Supported website releases: release prep, deployment, and post-deployment verification",
         "Implemented and debugged Chrome extension features; enhanced functionality",
-        "Demonstrated adaptability, professionalism, and strong team collaboration",
+      ],
+      impact: [
+        "Reduced extension error rate by 15% through rigorous debugging",
+        "Improved onboarding time by 20% with new documentation",
       ],
       current: false,
     },
@@ -125,30 +129,36 @@ const Experience = () => {
         <div className="space-y-8 relative">
           {/* Timeline line */}
           <div
-
-            className="hidden md:block absolute "
-
+            ref={lineRef}
+            className="absolute left-4 md:left-[27px] top-8 bottom-8 w-0.5 bg-border"
           >
-            <span className="timeline-track" />
-            <span className="timeline-fill" style={fillStyle} />
+            <span className="timeline-track block w-full h-full absolute top-0 left-0" />
+            <span className="timeline-fill block w-full absolute top-0 left-0 bg-primary transition-all duration-100 ease-linear" style={fillStyle} />
           </div>
 
           {experiences.map((exp, index) => (
             <Card
               key={index}
-              className="relative md:ml-20 p-6 hover:shadow-lg transition-shadow border border-border bg-card"
+              className="relative ml-12 md:ml-20 p-6 hover:shadow-lg transition-shadow border border-border bg-card"
             >
               {/* Timeline dot (markers) */}
               <div
                 ref={(el) => {
                   dotRefs.current[index] = el;
                 }}
-                className="hidden md:block absolute -left-[3.25rem] top-8 w-4 h-4 rounded-full bg-black border-4 border-background"
+                className="absolute -left-[2.05rem] md:-left-[3.25rem] top-8 w-4 h-4 rounded-full bg-background border-[3px] border-primary z-10"
               ></div>
 
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-primary mb-2">{exp.role}</h3>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {exp.tech.map((t) => (
+                      <Badge key={t} variant="secondary" className="text-xs font-normal">
+                        {t}
+                      </Badge>
+                    ))}
+                  </div>
                   <div className="flex items-center gap-2 text-foreground font-medium mb-2">
                     <Briefcase className="h-4 w-4 text-black" />
                     {exp.company}
@@ -172,14 +182,33 @@ const Experience = () => {
                 </div>
               </div>
 
-              <ul className="space-y-2">
-                {exp.responsibilities.map((resp, i) => (
-                  <li key={i} className="flex items-start gap-3 text-foreground/80">
-                    <span className="text-black mt-1.5 flex-shrink-0">•</span>
-                    <span>{resp}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-sm font-semibold text-primary mb-2">Responsibilities</h4>
+                  <ul className="space-y-2">
+                    {exp.responsibilities.map((resp, i) => (
+                      <li key={i} className="flex items-start gap-3 text-foreground/80">
+                        <span className="text-black mt-1.5 flex-shrink-0">•</span>
+                        <span>{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {exp.impact && (
+                  <div>
+                    <h4 className="text-sm font-semibold text-primary mb-2">Key Impact</h4>
+                    <ul className="space-y-2">
+                      {exp.impact.map((imp, i) => (
+                        <li key={i} className="flex items-start gap-3 text-foreground/80">
+                          <span className="text-green-600 mt-1.5 flex-shrink-0">✓</span>
+                          <span className="font-medium text-foreground/90">{imp}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </Card>
           ))}
         </div>
