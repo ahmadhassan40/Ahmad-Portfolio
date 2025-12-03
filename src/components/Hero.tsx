@@ -40,8 +40,29 @@ const Hero = () => {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
+    // Scroll lock logic for mobile
+    const handleScrollLock = () => {
+      const isMobile = window.innerWidth < 1024; // Standard lg breakpoint
+      if (isMobile && !showContent) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "unset";
+      }
+    };
+
+    handleScrollLock();
+    window.addEventListener("resize", handleScrollLock);
+
+    return () => {
+      document.body.style.overflow = "unset";
+      window.removeEventListener("resize", handleScrollLock);
+    };
+  }, [showContent]);
+
+  useEffect(() => {
     let index = 0;
     let revealTimer: number | undefined;
+
     const typingTimer = window.setInterval(() => {
       index += 1;
       setTypedCode(mernSnippet.slice(0, index));
@@ -116,7 +137,7 @@ const Hero = () => {
                 {/* Code Block */}
                 <div className="hero-code-block">
                   <div className="hero-code-lines" aria-hidden="true">
-                    {Array.from({ length: 14 }).map((_, index) => (
+                    {Array.from({ length: 20 }).map((_, index) => (
                       <span key={index}>{index + 1}</span>
                     ))}
                   </div>
@@ -142,7 +163,7 @@ const Hero = () => {
             <span className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">
               // Ahmad Hassan · MERN Stack Developer
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-tight whitespace-nowrap">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-tight md:whitespace-nowrap">
               MERN Stack Developer
             </h1>
             <p className="text-xl font-medium text-foreground/80">
@@ -196,7 +217,7 @@ const Hero = () => {
               <button type="button" className="btn-secondary" onClick={() => scrollToSection("#contact")}>
                 Contact Me
               </button>
-              <div className="flex items-center gap-3 ml-2">
+              <div className="flex items-center gap-3 flex-wrap">
                 {socialLinks.map((link) => (
                   <a
                     key={link.label}

@@ -2,50 +2,17 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, ExternalLink } from "lucide-react";
-import ProjectModal from "./ProjectModal";
 
 // Import project images
 import UTMage1 from "@/images/UTMage-1.png";
-import UTMage2 from "@/images/UTMage-2.png";
-import UTMage3 from "@/images/UTMage-3.png";
-import UTMage4 from "@/images/UTMage-4.png";
-import UTMage5 from "@/images/UTMage-5.png";
-
-import PixelPing1 from "@/images/pixelping.png";
-import PixelPing2 from "@/images/pixelping-2.png";
-import PixelPing3 from "@/images/pixelping-3.png";
-import PixelPing4 from "@/images/pixelping-4.png";
-
+import PixelPing1 from "@/images/pixelping-1.png";
 import LessonLint1 from "@/images/lessonlint-1.png";
-import LessonLint2 from "@/images/lessonlint-2.png";
-import LessonLint3 from "@/images/lessonlint-3.png";
-import LessonLint4 from "@/images/lessonlint-4.png";
-import LessonLint5 from "@/images/lessonlint-5.png";
-import LessonLint6 from "@/images/lessonlint-6.png";
+import CronCraft1 from "@/images/croncraft-1.png";
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const projects = [
-    {
-      title: "UTMage – Campaign URL Builder",
-      period: "May 2025 – July 2025",
-      type: "MERN Stack Project",
-      role: "Sole Developer",
-      tech: ["MongoDB", "Express", "React", "Node.js"],
-      description:
-        "Tool to create clean UTM-tagged links with instant checks for required fields, casing, and separators.",
-      result: "Helps marketers generate UTM links 3x faster with automated validation.",
-      highlights: [
-        "Added presets by channel, copy-to-clipboard, short-link/QR placeholders",
-        "One-click 'open report' buttons with demo functionality",
-        "Included bulk build from CSV, history table, and policies editor",
-        "Full site structure (Home, Product, Pricing, Docs, Status, Auth)",
-      ],
-      demoUrl: "#",
-      repoUrl: "#",
-      images: [UTMage1, UTMage2, UTMage3, UTMage4, UTMage5],
-    },
     {
       title: "PixelPing – Uptime & Web Vitals Monitor",
       period: "February 2025 – March 2025",
@@ -61,9 +28,28 @@ const Projects = () => {
         "Public status page for transparency",
         "Fast, mobile-friendly design with clear CTAs",
       ],
-      demoUrl: "#",
-      repoUrl: "#",
-      images: [PixelPing1, PixelPing2, PixelPing3, PixelPing4],
+      demoUrl: "https://pixelping-jet.vercel.app/",
+      repoUrl: "https://github.com/ahmadhassan40/pixel-ping",
+      images: [PixelPing1],
+    },
+    {
+      title: "UTMage – Campaign URL Builder",
+      period: "May 2025 – July 2025",
+      type: "MERN Stack Project",
+      role: "Sole Developer",
+      tech: ["MongoDB", "Express", "React", "Node.js"],
+      description:
+        "Tool to create clean UTM-tagged links with instant checks for required fields, casing, and separators.",
+      result: "Helps marketers generate UTM links 3x faster with automated validation.",
+      highlights: [
+        "Added presets by channel, copy-to-clipboard, short-link/QR placeholders",
+        "One-click 'open report' buttons with demo functionality",
+        "Included bulk build from CSV, history table, and policies editor",
+        "Full site structure (Home, Product, Pricing, Docs, Status, Auth)",
+      ],
+      demoUrl: "https://ut-mage.vercel.app/",
+      repoUrl: "https://github.com/ahmadhassan40/utmage",
+      images: [UTMage1],
     },
     {
       title: "LessonLint – AI-Powered Learning Assistant",
@@ -81,9 +67,28 @@ const Projects = () => {
         "Interactive dashboard with progress tracking and analytics",
         "Supports multiple subjects including Math, Science, and Programming",
       ],
-      demoUrl: "#",
-      repoUrl: "#",
-      images: [LessonLint1, LessonLint2, LessonLint3, LessonLint4, LessonLint5, LessonLint6],
+      demoUrl: "https://lessonlint.vercel.app/",
+      repoUrl: "https://github.com/ahmadhassan40/lesson-lint",
+      images: [LessonLint1],
+    },
+    {
+      title: "CronCraft – Automated Task Scheduler",
+      period: "August 2025 – Present",
+      type: "MERN Stack Project",
+      role: "Sole Developer",
+      tech: ["Node.js", "React", "MongoDB", "Cron"],
+      description:
+        "A powerful visual interface for managing, scheduling, and monitoring cron jobs across distributed systems.",
+      result: "Simplifies complex cron job management with a user-friendly GUI and real-time monitoring.",
+      highlights: [
+        "Visual cron expression builder and validator",
+        "Real-time execution logs and status monitoring",
+        "Email alerts for failed jobs and execution anomalies",
+        "Secure authentication and role-based access control",
+      ],
+      demoUrl: "https://croncraft-phi.vercel.app/",
+      repoUrl: "https://github.com/ahmadhassan40/cron-craft",
+      images: [CronCraft1],
     },
   ];
 
@@ -99,127 +104,111 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border border-border bg-card hover:border-black flex flex-col"
+              className="overflow-hidden hover:shadow-2xl transition-all duration-500 border border-border bg-card hover:border-black flex flex-col"
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Project Image Thumbnail - Always Visible */}
-              {project.images && project.images.length > 0 && (
+              {/* Hover Trigger Area */}
+              <div
+                className="cursor-pointer"
+                onMouseEnter={() => setHoveredIndex(index)}
+              >
+                {/* Project Image Thumbnail - Always Visible */}
+                {project.images && project.images.length > 0 && (
+                  <div className="w-full h-56 overflow-hidden relative">
+                    <img
+                      src={project.images[0]}
+                      alt={`${project.title} preview`}
+                      className={`w-full h-full object-cover object-top transition-transform duration-500 ${hoveredIndex === index ? "scale-105" : ""
+                        }`}
+                    />
+                  </div>
+                )}
+
+                {/* Title - Always Visible */}
+                <div className="p-6 pb-3">
+                  <h3 className="text-xl font-semibold text-primary">{project.title}</h3>
+                </div>
+
+                {/* Expandable Content - Controlled by state */}
                 <div
-                  className="w-full h-56 overflow-hidden cursor-pointer relative"
-                  onClick={() => setSelectedProject(index)}
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${hoveredIndex === index ? "max-h-[1000px]" : "max-h-0"
+                    }`}
                 >
-                  <img
-                    src={project.images[0]}
-                    alt={`${project.title} preview`}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity bg-black/70 px-4 py-2 rounded-full text-sm font-medium">
-                      View Gallery ({project.images.length} images)
-                    </span>
+                  <div className="px-6 pb-6 flex flex-col">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4 text-sm text-muted-foreground">
+                      <Badge variant="outline" className="w-fit">
+                        {project.type}
+                      </Badge>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        {project.period}
+                      </div>
+                    </div>
+
+                    <div className="mb-4">
+                      <p className="text-sm font-medium text-foreground mb-2">
+                        <span className="text-muted-foreground">Role:</span> {project.role}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech, i) => (
+                          <Badge key={i} className="bg-black text-white border-black">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+
+                    <p className="text-foreground/80 mb-4">{project.description}</p>
+
+                    {project.result && (
+                      <div className="mb-4 p-3 bg-green-50/50 border border-green-100 rounded-lg">
+                        <p className="text-sm font-medium text-green-800">
+                          <span className="font-bold">Result:</span> {project.result}
+                        </p>
+                      </div>
+                    )}
+
+                    <ul className="space-y-2 mb-6">
+                      {project.highlights.map((highlight, i) => (
+                        <li key={i} className="flex items-start gap-3 text-sm text-foreground/70">
+                          <span className="text-black mt-1 flex-shrink-0">•</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-              )}
-
-              {/* Title - Always Visible */}
-              <div className="p-6 pb-3">
-                <h3 className="text-xl font-semibold text-primary">{project.title}</h3>
               </div>
 
-              {/* Expandable Content - Hidden by default, shown on hover */}
-              <div className="max-h-0 group-hover:max-h-[1000px] overflow-hidden transition-all duration-500 ease-in-out">
-                <div className="px-6 pb-6 flex flex-col">
-                  <div className="flex items-center gap-2 mb-4">
-                    {project.demoUrl && (
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                        aria-label="Live Demo"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink className="h-5 w-5" />
-                      </a>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4 text-sm text-muted-foreground">
-                    <Badge variant="outline" className="w-fit">
-                      {project.type}
-                    </Badge>
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      {project.period}
-                    </div>
-                  </div>
-
-                  <div className="mb-4">
-                    <p className="text-sm font-medium text-foreground mb-2">
-                      <span className="text-muted-foreground">Role:</span> {project.role}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, i) => (
-                        <Badge key={i} className="bg-black text-white border-black">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <p className="text-foreground/80 mb-4">{project.description}</p>
-
-                  {project.result && (
-                    <div className="mb-4 p-3 bg-green-50/50 border border-green-100 rounded-lg">
-                      <p className="text-sm font-medium text-green-800">
-                        <span className="font-bold">Result:</span> {project.result}
-                      </p>
-                    </div>
-                  )}
-
-                  <ul className="space-y-2 mb-6">
-                    {project.highlights.map((highlight, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-foreground/70">
-                        <span className="text-black mt-1 flex-shrink-0">•</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex gap-3 pt-4 border-t border-border">
-                    <a
-                      href={project.demoUrl}
-                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-black text-white rounded-md text-sm font-medium hover:bg-black/90 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ExternalLink className="h-4 w-4" /> Live Demo
-                    </a>
-                    <a
-                      href={project.repoUrl}
-                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md text-sm font-medium transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      GitHub Repo
-                    </a>
-                  </div>
+              {/* Buttons - Always Visible & Outside Trigger Area */}
+              <div className="mt-auto p-6 pt-0 border-t border-border/50 bg-card z-10">
+                <div className="flex gap-3 pt-4">
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-black text-white rounded-md text-sm font-medium hover:bg-black/90 transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink className="h-4 w-4" /> Live Demo
+                  </a>
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md text-sm font-medium transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    GitHub Repo
+                  </a>
                 </div>
               </div>
             </Card>
           ))}
         </div>
-
-        {/* Project Modal */}
-        {selectedProject !== null && (
-          <ProjectModal
-            isOpen={selectedProject !== null}
-            onClose={() => setSelectedProject(null)}
-            images={projects[selectedProject].images}
-            projectTitle={projects[selectedProject].title}
-          />
-        )}
       </div>
     </section >
   );
 };
-
 
 export default Projects;

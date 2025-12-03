@@ -56,7 +56,7 @@ const About = () => {
             <div>
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Focus</h3>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">Dashboards</span>
+                <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">Full-Stack Development</span>
                 <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">Chrome Extensions</span>
                 <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">Performance</span>
               </div>

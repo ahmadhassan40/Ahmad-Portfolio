@@ -353,10 +353,25 @@ textarea:focus {
 
 .hero-actions {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 0;
-  /* Removed margin */
+}
+
+@media (max-width: 640px) {
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-actions button {
+    width: 100%;
+  }
+
+  .hero-actions>div {
+    justify-content: center;
+    margin-left: 0;
+  }
 }
 
 .btn-primary {
@@ -610,12 +625,11 @@ textarea:focus {
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: 5rem clamp(1rem, 3vw, 2rem) clamp(2rem, 5vw, 4rem);
   display: flex;
   align-items: center;
   justify-content: center;
   background: hsl(var(--background));
-  /* Removed colorful gradients */
 }
 
 .hero-container {
@@ -624,53 +638,45 @@ textarea:focus {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 2rem;
   align-items: stretch;
-  /* Ensure equal height */
 }
 
 @media (min-width: 1024px) {
   .hero-container {
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    /* Reduced gap */
   }
 }
 
 .hero-left {
-  order: 2;
+  order: 1;
   perspective: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  padding: 70px 25px;
-  /* Reduced horizontal padding */
+  padding: 20px 8px;
   flex: 1 1 0;
-  /* equal width with .hero-right */
+  max-width: 100%;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1023px) {
   .hero-left {
-    order: 1;
+    overflow: hidden;
   }
 }
 
-.hero-vscode-editor {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  width: 477px;
+@media (min-width: 768px) {
+  .hero-left {
+    padding: 40px 16px;
+  }
 }
-
-/* LEFT COLUMN */
-/* Duplicate .hero-left removed */
 
 @media (min-width: 1024px) {
   .hero-left {
-    order: 1;
-    /* Desktop: Code on Left */
+    padding: 70px 25px;
+    overflow: visible;
   }
 }
 
@@ -680,24 +686,51 @@ textarea:focus {
   flex-direction: column;
   overflow: hidden;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-left {
+    order: 1;
+  }
+
+  .hero-vscode-editor {
+    width: 477px;
+  }
 }
 
 .hero-right {
-  order: 1;
-  /* Mobile: Text on top */
+  order: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  gap: 2.5rem;
+  gap: 1.5rem;
   flex: 1 1 0;
-  /* Equal width */
+  max-width: 100%;
+  padding: 0 8px;
+}
+
+@media (max-width: 1023px) {
+  .hero-right {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-right {
+    gap: 2rem;
+    padding: 0 16px;
+  }
 }
 
 @media (min-width: 1024px) {
   .hero-right {
     order: 2;
-    /* Desktop: Text on Right */
+    gap: 2.5rem;
+    padding: 0;
+    overflow: visible;
   }
 }
 
@@ -821,11 +854,8 @@ textarea:focus {
 
 .hero-vscode-window {
   width: 100%;
-  max-width: 1600px;
-  /* Increased width a bit more */
-  height: 450px;
-  /* Increased height */
-  margin: -20px 0 0 -20px;
+  max-width: 100%;
+  height: auto;
   border-radius: 1.5rem;
   border: 2px solid #000;
   /* Solid black border */
@@ -835,15 +865,25 @@ textarea:focus {
   /* Hard black shadow */
   overflow: hidden;
   /* No scrollbars */
-  transform: rotateY(5deg) rotateX(2deg);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   display: flex;
   flex-direction: column;
 }
 
-.hero-vscode-window:hover {
-  transform: rotateY(0deg) rotateX(0deg) translateY(-5px);
-  box-shadow: 15px 15px 0px #000;
+@media (min-width: 1024px) {
+  .hero-vscode-window {
+    max-width: 1600px;
+    /* Increased width a bit more */
+    height: 450px;
+    /* Increased height */
+    margin: -20px 0 0 -20px;
+    transform: rotateY(5deg) rotateX(2deg);
+  }
+
+  .hero-vscode-window:hover {
+    transform: rotateY(0deg) rotateX(0deg) translateY(-5px);
+    box-shadow: 15px 15px 0px #000;
+  }
 }
 
 .hero-gradient {
@@ -939,15 +979,20 @@ textarea:focus {
 .hero-vscode-sidebar {
   width: 60px;
   background: #fff;
-  /* White background */
   border-right: 2px solid #000;
-  /* Black border */
   padding: 0.8rem 0.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
   flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .hero-vscode-sidebar {
+    width: 50px;
+    padding: 0.6rem 0.2rem;
+  }
 }
 
 .hero-vscode-sidebar.skill-icon {
@@ -1026,6 +1071,17 @@ textarea:focus {
   font-size: 0.8rem;
   font-weight: 500;
   color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+@media (max-width: 640px) {
+  .file-name {
+    font-size: 0.75rem;
+    max-width: 150px;
+  }
 }
 
 .hero-vscode-editor {
@@ -1376,22 +1432,6 @@ textarea:focus {
 @media (max-width: 768px) {
   .hero-vscode-container {
     padding: 4rem 0 2.5rem;
-  }
-
-  .hero-vscode-window {
-    border-radius: 0;
-  }
-
-  .hero-vscode-body {
-    flex-direction: column;
-  }
-
-  .hero-vscode-sidebar {
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    border-right: none;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   .hero-vscode-workbench {

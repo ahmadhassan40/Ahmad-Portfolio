@@ -16,19 +16,60 @@ const contactLinks = [
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    toast({
-      title: "Message sent",
-      description: "Thanks for reaching out — I'll respond shortly.",
-    });
-    setFormData({ name: "", email: "", message: "" });
+
+    if (isSending) return;
+
+    try {
+      setIsSending(true);
+
+      const response = await fetch("https://formsubmit.co/ajax/info.ahmadmughal@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: "New Portfolio Inquiry",
+          _template: "box",
+          _captcha: "false",
+          Name: formData.name,
+          Email: formData.email,
+          Message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to send message");
+      }
+
+      toast({
+        title: "Message sent successfully! 🚀",
+        description: "Thanks for reaching out. I'll get back to you shortly.",
+        variant: "default",
+      });
+
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Contact form error:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Please email me directly at info.ahmadmughal@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (

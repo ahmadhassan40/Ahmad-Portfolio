@@ -6,10 +6,10 @@ import { Briefcase, MapPin, Calendar } from "lucide-react";
 const Experience = () => {
   const experiences = [
     {
-      role: "MERN Stack & Chrome Extensions – Full-time Intern",
+      role: "MERN Stack & Chrome Extensions – Full-time Job",
       company: "Authority Hype",
       location: "Gujranwala, Pakistan",
-      period: "March 2025 – June 2025",
+      period: "March 2025 – On-going",
       tech: ["React", "Node.js", "MongoDB", "Chrome Extensions"],
       responsibilities: [
         "Assisted across MERN web apps (front-end & back-end modules)",
@@ -130,10 +130,10 @@ const Experience = () => {
           {/* Timeline line */}
           <div
             ref={lineRef}
-            className="absolute left-4 md:left-[27px] top-8 bottom-8 w-0.5 bg-border"
+            className="absolute left-[14px] md:left-[25px] top-8 bottom-8 w-1.5 bg-border/30 rounded-full"
           >
-            <span className="timeline-track block w-full h-full absolute top-0 left-0" />
-            <span className="timeline-fill block w-full absolute top-0 left-0 bg-primary transition-all duration-100 ease-linear" style={fillStyle} />
+            <span className="timeline-track block w-full h-full absolute top-0 left-0 rounded-full" />
+            <span className="timeline-fill block w-full absolute top-0 left-0 bg-primary rounded-full" style={fillStyle} />
           </div>
 
           {experiences.map((exp, index) => (
